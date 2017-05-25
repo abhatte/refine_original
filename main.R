@@ -21,7 +21,6 @@ refine_original %>%
   unite(full_address, address:country, sep = ",", remove = FALSE) %>%
   mutate(company_philips = grep("philips", 1, x = company))
   
-
     
 
 
