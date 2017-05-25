@@ -19,15 +19,9 @@ refine_original %>%
   mutate(product_cat = sub("q", "Tablet", x = product_cat)) %>%
   #add full address for geocoding
   unite(full_address, address:country, sep = ",", remove = FALSE) %>%
-  mutate(company_philips = grep("philips", x = company))
+  mutate(company_philips = grep("philips", 1, x = company))
   
-transAshwini <- function(x, val)
-  if (x == val) {
-    1
-  }
-  else {
-    0
-  }
+
     
 
 
