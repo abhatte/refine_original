@@ -19,8 +19,14 @@ refine_original %>%
   mutate(product_cat = sub("q", "Tablet", x = product_cat)) %>%
   #add full address for geocoding
   unite(full_address, address:country, sep = ",", remove = FALSE) %>%
-  mutate(company_philips = grep("philips", 1, x = company))
-  
-    
-
+  #dummy variables for company and product categories
+  mutate(company_philips = ifelse(company == "philips", 1,0)) %>%
+  mutate(company_akzo = ifelse(company == "akzo", 1,0)) %>%
+  mutate(company_van_houten = ifelse(company == "van houten", 1,0)) %>%
+  mutate(company_unilever = ifelse(company == "unilever", 1,0)) %>%
+  mutate(product_smartphone = ifelse(product_cat == "smartphone", 1,0)) %>%
+  mutate(product_tv = ifelse(product_cat == "TV", 1,0)) %>%
+  mutate(product_laptop = ifelse(product_cat == "Laptop", 1,0)) %>%
+  mutate(product_Tablet = ifelse(product_cat == "Tablet", 1,0)) %>%
+  write.csv(file = "refine_clean.csv")
 
