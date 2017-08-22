@@ -1,11 +1,9 @@
-
-setwd("/Users/ashwinibhatte/Downloads")
 refine_original = read.csv("refine_original.csv", header = TRUE)
 #clean up brand names
 library(dplyr)
 library(tidyr)
 refine_original %>%
-  mutate(company = tolower(company)) %>%
+  mutate(company = tolower(company)) %>%  #Clean up brand names to lowercase
   mutate(company = sub("^[p|f].+s$", "philips", x = company)) %>%
   mutate(company = sub("^a.+[o|0]$", "akzo", x = company)) %>%
   mutate(company = sub("^v.+n$", "van houten", x = company)) %>%
